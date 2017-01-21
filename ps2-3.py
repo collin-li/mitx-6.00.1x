@@ -36,21 +36,30 @@ balance = 5000
 annualInterestRate = 0.18
 
 # SOLUTION
+def yearEndBalance(balance, monthlyPayment):
+    '''
+    balance: outstanding balance on the credit card (int or float)
+    monthlyPayment: fixed monthly payment (int or float)
+    
+    returns: ending balance on the credit card after 12 months (int or float)
+    '''
+    for month in range(12):
+        balance = (balance - monthlyPayment) * (1 + monthlyInterestRate)
+    return balance
+    
 monthlyInterestRate = annualInterestRate / 12.0
 
-lower = balance / 12
-upper = balance * (1 + monthlyInterestRate)**12 / 12
+lower = balance / 12 # Lower bound based on lowest (zero) interest effect
+upper = balance * (1 + monthlyInterestRate)**12 / 12  # Upper bound based on highest interest effect (unchecked growth)
+monthlyPayment = (lower + upper)/2
 
-testbalance = balance
+testbalance = yearEndBalance(balance, monthlyPayment)
 
-while abs(testbalance) > 0.01:
-    testbalance = balance
+while abs(testbalance) > 0.01: # Error tolerance to the cent (0.01)
+    if testbalance > 0: lower = monthlyPayment
+    elif testbalance < 0: upper = monthlyPayment
     monthlyPayment = (lower + upper)/2
-    for month in range(12):
-        testbalance = (testbalance - monthlyPayment) * (1 + monthlyInterestRate)
-    if testbalance > 0:
-        lower = monthlyPayment
-    elif testbalance < 0:
-        upper = monthlyPayment
+
+    testbalance = yearEndBalance(balance, monthlyPayment)
 
 print('Lowest Payment:', round(monthlyPayment,2))

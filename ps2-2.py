@@ -27,15 +27,22 @@ balance = 5000
 annualInterestRate = 0.18
 
 # SOLUTION 
+def yearEndBalance(balance, monthlyPayment):
+    '''
+    balance: outstanding balance on the credit card (int or float)
+    monthlyPayment: fixed monthly payment (int or float)
+    
+    returns: ending balance on the credit card after 12 months (int or float)
+    '''
+    for month in range(12):
+        balance = (balance - monthlyPayment) * (1 + monthlyInterestRate)
+    return balance
+
 monthlyInterestRate = annualInterestRate / 12.0
 
-testbalance = balance
-monthlyPayment = 10*int(balance/12/10 - 1)
+monthlyPayment = 10*int(balance/12/10) # Initial guess set as 1/12th of balance
 
-while testbalance > 0:
-    testbalance = balance
+while yearEndBalance(balance, monthlyPayment) > 0:
     monthlyPayment += 10
-    for month in range(12):
-        testbalance = (testbalance - monthlyPayment) * (1 + monthlyInterestRate)
 
 print('Lowest Payment:', monthlyPayment)    
