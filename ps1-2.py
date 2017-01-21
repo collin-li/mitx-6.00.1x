@@ -13,7 +13,7 @@ s = 'azcbobobegghakl'
 # SOLUTION
 bobcount = 0
 
-for num in range(len(s)-2):
+for num in range(len(s)-2): # Terminate 'bob' search after 3rd-last letter
     if s[num:num+3] == 'bob':
         bobcount += 1
 

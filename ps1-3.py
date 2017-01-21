@@ -20,17 +20,22 @@ s = 'azcbobobegghakl'
 
 if len(s) > 1:
     
-    bestsubstring = s[0]
-    bestlength = 1
+    substring = s[0]
     length = 1
+
+    # Store initial solution
+    bestsubstring = substring
+    bestlength = length
     
-    for num in range(len(s)-1):
+    for num in range(len(s)-1): # Last letter is checked by 2nd-last letter
         if s[num] <= s[num+1]:
+            substring = substring + s[num+1]
             length += 1
             if length > bestlength:
+                bestsubstring = substring
                 bestlength = length
-                bestsubstring = s[num+2-length:num+2]
-        else:
+        else: # Reset substring and length
+            substring = s[num+1]
             length = 1
             
 else:
