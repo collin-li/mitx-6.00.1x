@@ -9,4 +9,5 @@ The details of the problem being solved will be stated in the comments of the co
 
 Problems that I found interesting and not completely trivial (completely subjective):
 * ps1_3.py
+* ps3_4.py (Hangman!)
 * More to come...
