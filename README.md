@@ -1,3 +1,4 @@
+# mitx-6.00.1x
 This repository contains Python code developed throughout the course of 6.00.1x taken through MITx
 
 There will be individual files per problem in each problem set. For example, Problem Set 1 has 3 problems, thus you will find the files:
