@@ -7,7 +7,7 @@
 # of the game. A valid word is in the word list; and it is composed entirely of
 # letters from the current hand. Implement the isValidWord function.
 
-# Import functions from earlier problems
+# Import function from helper code
 from ps4_0 import getFrequencyDict
 
 # SOLUTION
